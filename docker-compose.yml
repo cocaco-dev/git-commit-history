@@ -1,0 +1,17 @@
+version: '3.5'
+services:
+  client:
+    build:
+      context: ./client
+      dockerfile: 'Dockerfile'
+    restart: always
+    expose:
+      - "80"
+    ports:
+      - '3000:80'
+  backend:
+    build:
+      context: ./rest-api
+      dockerfile: 'Dockerfile'
+    ports:
+      - "4000:4000"
