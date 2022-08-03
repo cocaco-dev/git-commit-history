@@ -7,17 +7,17 @@
     "test": "test"
   },
   "scripts": {
-    "start": "node server",
-    "dev": "nodemon server"
+    "start": "node app",
+    "dev": "nodemon app"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@fastify/cors": "^8.0.0",
+    "@fastify/swagger": "^6.0.0",
     "axios": "^0.27.2",
-    "fastify": "^4.0.0",
-    "fastify-swagger": "^5.2.0",
-    "octokit": "^2.0.4"
+    "fastify": "^4.0.0"
   },
   "devDependencies": {
     "eslint": "^8.21.0",
