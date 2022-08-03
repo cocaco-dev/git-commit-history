@@ -1,8 +1,7 @@
 
 # Github commit history
 
-Project to get all commits from a repo using react + tailwind css for the frontend and fastify for the rest api
-
+Project to get all commits from a public repo from github, on the UI(localhost:3000) you have to enter as an input a valid username and a valid and public repository of that user.
 
 
 ## Deploy
@@ -12,6 +11,7 @@ To run the project, on the root folder run:
 ```bash
   docker-compose up -d
 ``` 
+The frontend run on http://localhost:3000 and the rest-api is on  http://localhost:4000/api
 
 If you want to run locally you have to run:
  - Backend: folder ./rest-api
