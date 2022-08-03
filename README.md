@@ -31,6 +31,9 @@ If you want to run locally you have to run:
 - Only can search for public repositories
 - The rate limit of public api of github without using authentications is very short [github rate limit](https://docs.github.com/en/enterprise-cloud@latest/developers/apps/building-github-apps/rate-limits-for-github-apps)
 
+##  Testing
+
+the tests remains pending
 
 ## Authors
 
