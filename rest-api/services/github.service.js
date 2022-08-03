@@ -10,16 +10,34 @@ const getAuth = (token = null) => {
   return {}
 }
 
-export const getUserById = async (token = null, userId) => {
+exports.isValidUsername = async (userName) => {
+  try {
+    const authHeaders = getAuth()
+    await axios.get(`https://api.github.com/users/${userName}`, authHeaders)
+    return { isValid: true, message: '' }
+  } catch (error) {
+    if (error.response?.status && error.response.status === 403) {
+      return { isValid: false, message: error.response.data.message }
+    }
+    return { isValid: false, message: 'User not found' }
+  }
+}
+
+exports.getCommits = async (userId, repoName, token = null) => {
   const authHeaders = getAuth(token)
-  const { data } = await axios.get(`https://api.github.com/users/${userId}`, authHeaders)
-  console.log('🚀 ~ file: github.service.js ~ line 17 ~ getUserById ~ data', data)
+  const { data } = await axios.get(`https://api.github.com/repos/${userId}/${repoName}/commits`, authHeaders)
   return data
 }
 
-export const getCommits = async (token = null, userId, repoName) => {
-  const authHeaders = getAuth(token)
-  const { data } = await axios.get(`https://api.github.com/repos/${userId}/${repoName}/commits`, authHeaders)
-  console.log('🚀 ~ file: github.service.js ~ line 23 ~ getCommits ~ data', data)
-  return data
+exports.isValidRepo = async (userId, repoName, token = null) => {
+  try {
+    const authHeaders = getAuth(token)
+    await axios.get(`https://api.github.com/repos/${userId}/${repoName}`, authHeaders)
+    return { isValid: true, message: '' }
+  } catch (error) {
+    if (error.response?.status && error.response.status === 403) {
+      return { isValid: false, message: error.response.data.message }
+    }
+    return { isValid: false, message: `Repository ${repoName} of the user ${userId} not found` }
+  }
 }
