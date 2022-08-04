@@ -1,12 +1,12 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { getCommitHistory } from './services/api'
 import Form from './components/templates/Form'
 import Commits from './components/templates/Commits'
 function App() {
   console.log(process.env.REACT_APP_BACKEND_API)
   const [commitHistory, setCommitHistory] = useState({
-    owner: localStorage.getItem('owner') || '',
-    repo: localStorage.getItem('repo') || '',
+    owner: localStorage.getItem('owner') || 'cocaco-dev',
+    repo: localStorage.getItem('repo') || 'git-commit-history',
     showCommits: false,
     error: '',
     commits: []
@@ -28,11 +28,7 @@ function App() {
       setCommitHistory({ ...commitHistory, commits: [], error: error.message || 'something went wrong', showCommits: false })
     }
   }
-  useEffect(() => {
-    if (owner && repo) {
-      getCommits(owner, repo)
-    }
-  }, [])
+
   if (showCommits && owner && repo) {
     return    <Commits commits={commits} repo={repo} owner={owner} backButton={() => setCommitHistory((prevState) => ({...prevState, showCommits: false}))} />
   }
