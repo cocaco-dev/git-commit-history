@@ -6,7 +6,7 @@ Project to get all commits from a public repo from github, on the UI(localhost:3
 
 ## Deploy
 
-This project can be locally deploy with docker-compose. You need to create an a file called .env on the root of folder "client".
+This project can be locally deploy with docker-compose. If there is an update on the repo run docker-compose build to recompile the files and get the new changes with docker.
 To run the project, on the root folder run:
 ```bash
   docker-compose up -d
